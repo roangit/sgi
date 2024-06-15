@@ -1,0 +1,78 @@
+{
+  "tecnicos": [
+    {
+      "id": 1,
+      "nome": "Daniel Mizerski"
+    },
+    {
+      "id": 2,
+      "nome": "Daverson Rosa"
+    },
+    {
+      "id": 3,
+      "nome": "Denis Braz"
+    },
+    {
+      "id": 4,
+      "nome": "Ederli Reis"
+    },
+    {
+      "id": 5,
+      "nome": "Eduarda Dos Santos"
+    },
+    {
+      "id": 6,
+      "nome": "Helder Goulart"
+    },
+    {
+      "id": 7,
+      "nome": "Kely Camargo"
+    },
+    {
+      "id": 8,
+      "nome": "Thales Drews"
+    },
+    {
+      "id": 9,
+      "nome": "Rafael T. Cruz"
+    },
+    {
+      "id": 5,
+      "nome": "Marinaldo dias da Costa"
+    },
+    {
+      "id": "fc6c",
+      "nome": "Marinaldo dias da Costa"
+    },
+    {
+      "id": "b51e",
+      "nome": "Joao da Silva"
+    },
+    {
+      "id": "12d2",
+      "nome": "Joao da Silva"
+    },
+    {
+      "id": "167e",
+      "nome": "Daniel Mizerski"
+    }
+  ],
+  "vendedores": [
+    {
+      "id": 1,
+      "nome": "Anderson Aneli"
+    },
+    {
+      "id": 2,
+      "nome": "Edison Neves"
+    },
+    {
+      "id": 3,
+      "nome": "Leandro Nolde"
+    },
+    {
+      "id": 4,
+      "nome": "Reginaldo Vasseur"
+    }
+  ]
+}

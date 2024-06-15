@@ -1,0 +1,46 @@
+.mainContainer{
+    position: relative;
+    background: #E4E9F7;
+    height: 100vh;
+    left: 260px;
+    width: calc(100% - 260px);
+    transition: all 0.5s ease;
+    padding: 12px;
+  }
+
+
+  .sidebarClose{  
+    left: 78px;
+    width: calc(100% - 78px);
+  }
+/* CSS Global ver como colocar para ser Global*/
+  .bodyContainer{
+    width:auto;  
+    height: 100vh;
+    display: grid; 
+    grid-auto-flow: row;
+    grid-template-columns: 5% 90% 5%; 
+    grid-template-rows: 5% 90% 5%; 
+    gap: 0px; 
+    grid-template-areas: 
+      "cse bordasup csd"
+      "lat_esq centro lat_dir"
+      "cie bordainf cid";
+  }
+  
+  .centro { 
+    grid-area: centro;    
+    background-color:white;
+    height: 85%; 
+    overflow:auto; 
+  }
+
+  .tab {
+    margin: 5px 5% 5px 5%;
+    width: 90%;
+    min-height: 250px; /*provisorio*/
+    display: flex; /*normal é flex*/
+    flex-direction: column;
+    padding: 5px;
+    border: 1px solid grey;
+  }
