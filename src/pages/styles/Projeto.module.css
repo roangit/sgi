@@ -1,6 +1,7 @@
 .mainContainer{
     position: relative;
-    background: #E4E9F7;
+    background-color:  #E4E9F7;
+    
     height: 100vh;
     left: 260px;
     width: calc(100% - 260px);
@@ -19,7 +20,7 @@
     height: 100vh;
     display: grid; 
     grid-auto-flow: row;
-    grid-template-columns: 5% 90% 5%; 
+    grid-template-columns: 20% 60% 20%; 
     grid-template-rows: 5% 90% 5%; 
     gap: 0px; 
     grid-template-areas: 
@@ -31,16 +32,41 @@
   .centro { 
     grid-area: centro;    
     background-color:white;
-    height: 85%; 
+    height: 65%; 
+    box-shadow: 0px 7px 29px 0px rgba(100,100,111,0.5);
     overflow:auto; 
   }
 
-  .tab {
+  .inputContainer {
     margin: 5px 5% 5px 5%;
     width: 90%;
-    min-height: 250px; /*provisorio*/
-    display: flex; /*normal é flex*/
+    min-height: 250px;
+    display: flex; 
     flex-direction: column;
     padding: 5px;
-    border: 1px solid grey;
+    /*border: 2px solid grey; */
+
+  }
+
+  .actions {
+    margin: 5px 5% 5px 5%;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .actions button {
+    padding: 0.5rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background-color: #DFDFDF;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+  }
+
+  .actions button:hover {
+    background-color: #CFCFCF ;
   }
