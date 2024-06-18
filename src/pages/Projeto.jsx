@@ -11,10 +11,11 @@ import ObjetiveForm from '../components/FormTap/ObjetiveForm';
 import StakeHolderForm from '../components/FormTap/StakeHolderForm';
 
 //hooks
-import { useForm } from "../hooks/useForm";
+import { useFormControl } from "../hooks/useFormControl";
 
 //css
 import styles from './styles/Projeto.module.css'
+
 
 const Projeto = () => {
    const {sideClose} = useContext(SidebarStateContext);
@@ -25,7 +26,7 @@ const Projeto = () => {
                {component: <ObjetiveForm/>, name: 'Objetivos'}, {component: <StakeHolderForm/>, name: 'StakeHolders'}];
 
 
-   const {currentStep, currrentComponent, changeStep, isLastStep, isFirstStep } = useForm(steps);
+   const {currentStep, currrentComponent, changeStep, isLastStep, isFirstStep } = useFormControl(steps);
 
     
    return (

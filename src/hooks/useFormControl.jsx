@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export function useForm(steps = []) {
+export function useFormControl(steps = []) {
     const [currentStep, setCurrentStep] = useState(0);
 
     function changeStep(i, e) {
