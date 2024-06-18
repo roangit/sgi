@@ -30,7 +30,9 @@
   }
   
   .centro { 
-    grid-area: centro; 
-    background-color:#f5f5f5;
-  
+    grid-area: centro;    
+    background-color:white;
+    height: 65%; 
+    box-shadow: 0px 7px 29px 0px rgba(100,100,111,0.5);
+    overflow:auto; 
   }

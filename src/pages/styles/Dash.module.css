@@ -13,3 +13,11 @@
     left: 78px;
     width: calc(100% - 78px);
   }
+
+  .centro { 
+    grid-area: centro;    
+    background-color:white;
+    height: 65%; 
+    box-shadow: 0px 7px 29px 0px rgba(100,100,111,0.5);
+    overflow:auto; 
+  }

@@ -4,9 +4,10 @@ const MainHeader = ({titulo}) => {
   return (
     <>
           <h1 style={{textAlign: 'center', fontSize: '40px'}}>{titulo}</h1>
-          <hr style={{width:'70%', margin:'auto', border: '2px solid', borderRadius: '5px'}}/>   
+          <hr style={{width:'70%', margin:'auto', marginBottom:'2%', border: '2px solid', borderRadius: '5px'}}/>   
     </>
   )
 }
 
 export default MainHeader
+
