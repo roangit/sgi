@@ -32,7 +32,12 @@ const Projeto = () => {
 
    // react-hook-form
 
-   const methods = useForm()
+   const methods = useForm({
+      defaultValues: {
+         objetivos: [{ descri: '' }],
+         responsaveis: [{ nome: ''}],
+      },
+      });
    const onSubmit = (data) => console.log(data) //jogando os dados no console
 
 

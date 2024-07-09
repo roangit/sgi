@@ -10,11 +10,12 @@ const IdentifyForm = () => {
         <input 
           id="projId"
           type="number"
-          min="1"
-          max="999999" 
+          min="111111"
+          max="9999999" 
           placeholder=""
           {...register("projId", {required: true })}
         />  
+
         <label htmlFor="tipoProj">Tipo de projeto:</label>
         <select 
           id="tipoProj"
@@ -24,26 +25,50 @@ const IdentifyForm = () => {
           <option value="Consultoria">Consultoria</option>
         </select>
 
+        <label htmlFor="Produto">Produto principal relacionado ao projeto:</label>
+        <select 
+          multiple={false}
+          id="Produto"
+          {...register("Produto", {required: true})}>
+          <option value="Start">Start</option>
+          <option value="Plus">Plus</option>
+          <option value="Premium">Premium</option>
+          <option value="Personalizado">Personalizado</option>
+          <option value="Empresarial">Empresarial</option>
+        </select>
+
         <label htmlFor='nomeCli'>Nome cliente:</label>
         <input
           id="nomeCli"
           placeholder=""
-          {...register("nomeCli", { required: true, maxLength: 120 })}
+          autoComplete="off"
+          style={{textTransform: 'uppercase'}}
+          {...register("nomeCli", { required: true, maxLength: 120, pattern: /^[A-Z]+$/i } )}
         />
         
-        <label htmlFor='respTec'>Responsável técnico:</label>
-        <input
+        <label htmlFor="respTec">Responsável Técnico:</label>
+        <select 
           id="respTec"
-          placeholder=""
-          {...register("respTec", { required: true, maxLength: 120 })}
-        />
+          {...register("respTec", {required: true})}>
+          <option value="Daniel Mizerski">Daniel Mizerski</option>
+          <option value="Denis Braz">Denis Braz</option>
+          <option value="Ederli Reis">Ederli Reis</option>
+          <option value="Eduarda Santos">Eduarda Santos</option>
+          <option value="Helder Goulart">Helder Goulart</option>
+          <option value="Marinaldo Costa">Marinaldo Costa</option>
+          <option value="Paulo Correa">Paulo Correa</option>
+          <option value="Rafael Cruz">Rafael Cruz</option>
+          <option value="Thiago Roloff">Thiago Roloff</option>
+        </select>
 
-        <label htmlFor='liderProj'>Lider do projeto:</label>
-        <input
+
+        <label htmlFor="liderProj">Lider do projeto:</label>
+        <select 
           id="liderProj"
-          placeholder=""
-          {...register("liderProj", { required: true, maxLength: 120 })}
-        />
+          {...register("liderProj", {required: true})}>
+          <option value="Daniel Mizerski">Daniel Mizerski</option>
+          <option value="Roan Santos">Roan Santos</option>
+        </select>
     </>
   )
 }

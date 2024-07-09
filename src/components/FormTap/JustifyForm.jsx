@@ -12,7 +12,7 @@ const JustifyForm = () => {
       rows="14"
       cols="100"
       required
-      {...register("justificativas", { required: true, maxLength: 120 })} >
+      {...register("justificativas", { required: true })} >
     </textarea>
    </>
   )
