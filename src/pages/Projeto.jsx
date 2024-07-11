@@ -11,6 +11,9 @@ import IdentifyForm from '../components/FormTap/IdentifyForm';
 import JustifyForm from  '../components/FormTap/JustifyForm';
 import ObjetiveForm from '../components/FormTap/ObjetiveForm';
 import StakeHolderForm from '../components/FormTap/StakeHolderForm';
+import ColetaDadosForm from "../components/FormTap/ColetaDadosForm";
+import CalcTempoForm from "../components/FormTap/CalcTempoForm";
+import MetasForm from "../components/FormTap/MetasForm";
 
 //hooks
 import { useFormControl } from "../hooks/useFormControl";
@@ -26,8 +29,16 @@ const Projeto = () => {
  
   
    // stepper     
-   const steps = [{id:1, component: <IdentifyForm/>, name: 'identificação'}, {id:2, component: <JustifyForm/>, name: 'Justificativas'},
-               {id:3, component: <ObjetiveForm/>, name: 'Objetivos'}, {id:4, component: <StakeHolderForm/>, name: 'StakeHolders'}];
+   const steps = [{id:1, component: <IdentifyForm/>, name: 'identificação'},
+                  {id:2, component: <StakeHolderForm/>, name: 'StakeHolders'},
+                  {id:3, component: <JustifyForm/>, name: 'Justificativas'},
+                  {id:4, component: <ObjetiveForm/>, name: 'Objetivos'},
+                  {id:5, component: <ColetaDadosForm/>, name: 'Coleta de dados'},
+                  {id:6, component: <CalcTempoForm/>, name: 'Calculo esforço x tempo'},
+                  {id:7, component: <MetasForm/>, name: 'Metas/Prazos'},
+                  {id:8, component: <StakeHolderForm/>, name: 'Cronograma'}
+               ];
+
    const {currentStep, currrentComponent, changeStep, isLastStep, isFirstStep } = useFormControl(steps);
 
    // react-hook-form
@@ -35,7 +46,7 @@ const Projeto = () => {
    const methods = useForm({
       defaultValues: {
          objetivos: [{ descri: '' }],
-         responsaveis: [{ nome: ''}],
+         interessados: [{ nome: '',funcao: '', fone:'', tipoInteresse:'', grauInteresse:'', grauInfluencia:'', }]
       },
       });
    const onSubmit = (data) => console.log(data) //jogando os dados no console

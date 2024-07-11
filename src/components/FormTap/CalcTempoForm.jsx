@@ -5,22 +5,23 @@ import { FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
 
 import { useFormContext, useFieldArray } from "react-hook-form"
 
-const StakeHolderForm = () => {
+const CalcTempoForm = () => {
   const {register, control, handleSubmit, watch  } = useFormContext();
   const { fields, append, remove } = useFieldArray({ control,  name: "interessados" });
   return (
     <>
-       <h2 style={{marginBottom: '2%'}}>StakHolders</h2>
-        <label>Indique as partes interessadas</label>
+       <h2 style={{marginBottom: '2%'}}>Cálculo do tempo x esforço empregado</h2>
+        <label>Simulador</label>
         <table className="table_1">
         <thead>
         <tr>
-        <th style={{width: '350px'}}>Nome</th>
-        <th style={{width: '200px'}}>Participação</th>
-        <th style={{width: '120px'}}>Telefone</th>
-        <th style={{width: '120px'}}>Tipo de interesse</th>
-        <th style={{width: '120px'}}>Grau de interesse</th>
-        <th style={{width: '120px'}}>Grau de influência</th>
+        <th style={{width: '200px'}}>Departamento</th>
+        <th style={{width: '120px'}}>Go Live</th>
+        <th style={{width: '120px'}}>Qtd. Colaboradores</th>
+        <th style={{width: '120px'}}>Qtd. Empresas</th>
+        <th style={{width: '120px'}}>Qtd Diária de empresas por colaborador</th>
+        <th style={{width: '120px'}}>Qtd Semanal de empresas por colaborador</th>
+        <th style={{width: '120px'}}>Dias úteis em implantação</th>
         <th style={{width: '65px'}}>Ações</th>
 
         </tr>
@@ -54,29 +55,18 @@ const StakeHolderForm = () => {
           </td>
 
           <td>
-            <select 
-              {...register(`interessados.${index}.tipoInteresse` , { required: true })} >
-              <option value="Positivo">Positivo</option>
-              <option value="Negativo">Negativo</option>
-            </select>
+            <input
+              type="text"
+              maxLength="60"
+              
+              {...register(`interessados.${index}.fone` , { required: true })} 
+            />
           </td>
 
-          <td>
-            <select 
-              {...register(`interessados.${index}.grauInteresse` , { required: true })} >
-              <option value="Negativo">Alto</option>
-              <option value="Positivo">Baixo</option>
-            </select>
-          </td>
 
-          <td>
-            <select 
-              {...register(`interessados.${index}.grauInfluencia` , { required: true })} >
-              <option value="Negativo">Alto</option>
-              <option value="Positivo">Baixo</option>
-            </select>
-          </td>
-
+          <td></td>
+          <td></td>
+          <td></td>
           <td>
               <i onClick={() => {append({ name: "interessados"  }); }}><FaRegPlusSquare/></i>
               {(() => {
@@ -94,4 +84,4 @@ const StakeHolderForm = () => {
   )
 }
 
-export default StakeHolderForm
+export default CalcTempoForm

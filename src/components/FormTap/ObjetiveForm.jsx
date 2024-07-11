@@ -15,8 +15,8 @@ return (
   <label>O projeto será considerado um sucesso se...</label>
   <ul>
     {fields.map((field, index) => (
-      <li>
-          <input key={field.id}
+      <li key={field.id}>
+          <input 
             type="text"
             placeholder="Descreva de forma SMART quais os KPIs/OKRs de sucesso do projeto."
             {...register(`objetivos.${index}.descri`)}
