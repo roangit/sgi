@@ -30,14 +30,14 @@ const Projeto = () => {
  
   
    // stepper     
-   const steps = [{id:1, component: <IdentifyForm/>, name: 'identificação'},
-                  {id:2, component: <StakeHolderForm/>, name: 'StakeHolders'},
-                  {id:3, component: <JustifyForm/>, name: 'Justificativas'},
-                  {id:4, component: <ObjetiveForm/>, name: 'Objetivos'},
-                  {id:5, component: <ColetaDadosForm/>, name: 'Coleta de dados'},
-                  {id:6, component: <CalcTempoForm/>, name: 'Calculo esforço x tempo'},
-                  {id:7, component: <MetasForm/>, name: 'Metas/Prazos'},
-                  {id:8, component: <Cronograma/>, name: 'Cronograma'}
+   const steps = [{id:0, component: <IdentifyForm/>, name: 'identificação'},
+                  {id:1, component: <StakeHolderForm/>, name: 'StakeHolders'},
+                  {id:2, component: <JustifyForm/>, name: 'Justificativas'},
+                  {id:3, component: <ObjetiveForm/>, name: 'Objetivos'},
+                  {id:4, component: <ColetaDadosForm/>, name: 'Coleta de dados'},
+                  {id:5, component: <CalcTempoForm/>, name: 'Calculo esforço x tempo'},
+                  {id:6, component: <MetasForm/>, name: 'Metas/Prazos'},
+                  {id:7, component: <Cronograma/>, name: 'Cronograma'}
                ];
 
    const {currentStep, currrentComponent, changeStep, isLastStep, isFirstStep } = useFormControl(steps);
@@ -62,7 +62,13 @@ const Projeto = () => {
             <div className={styles.centro}>
                <div className={styles.stepContainer}>
                   {steps.map((item, index) => 
-                    (<span key={item.id}>{item.name}</span> ))
+                    (<span 
+                        key={item.id} 
+                        style={item.id == currentStep ?  {color:'#f97316'} :  {color:'#44403c'} }                      
+                     >
+                        {item.name}
+                    </span> ))       
+
                   }
                </div>               
                {/**********************  FORMULÁRIO  ******************/}
@@ -73,9 +79,13 @@ const Projeto = () => {
                         :
                         ((e)=> { changeStep(currentStep + 1, e)})        
                      }>
+
+                     {/**********************  APRESENTA O COMPONENTE CORRENT NA DIV  ******************/}
                      <div className={styles.inputContainer}>
                         {currrentComponent.component}
                      </div>
+
+                     {/**********************  APRESENTA E ACIONA OS BOTÕES DE AÇÃO  ******************/}
                      <div className={styles.actions}>
                      {!isFirstStep && ( 
                         <button type='button' style={{textAlign: 'right'}} onClick={() => changeStep(currentStep - 1)}>Anterior</button> 

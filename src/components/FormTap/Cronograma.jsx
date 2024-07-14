@@ -1,6 +1,8 @@
 import React from 'react'
+import { saveAs } from 'file-saver';
 import { BlobProvider} from '@react-pdf/renderer';
 import MyDoc from '../../reports/Report1';
+
 
 //import icones
 import { FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
@@ -8,8 +10,19 @@ import { FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
 import { useFormContext, useFieldArray } from "react-hook-form"
 
 const Cronograma = () => {
-  const {register, control, handleSubmit, watch  } = useFormContext();
+  const {register, control, handleSubmit, watch, getValues  } = useFormContext();
   const { fields, append, remove } = useFieldArray({ control,  name: "interessados" });
+
+  function exportFile() {
+    let lyrics =
+    "But still I'm having memories of high speeds when the cops crashed\n" +
+    "As I laugh, pushin the gas while my Glocks blast\n" ; 
+    
+  
+    var blob = new Blob([lyrics], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "testfile1.txt");
+  }
+
   return (
     <>
        <h2 style={{marginBottom: '2%'}}>Cronograma</h2>
@@ -101,6 +114,8 @@ const Cronograma = () => {
             );
           }}
       </BlobProvider>
+
+      <button onClick={() => exportFile()}>exportFile</button>
 
     </>
   )
