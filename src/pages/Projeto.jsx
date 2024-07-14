@@ -14,6 +14,7 @@ import StakeHolderForm from '../components/FormTap/StakeHolderForm';
 import ColetaDadosForm from "../components/FormTap/ColetaDadosForm";
 import CalcTempoForm from "../components/FormTap/CalcTempoForm";
 import MetasForm from "../components/FormTap/MetasForm";
+import Cronograma from "../components/FormTap/Cronograma";
 
 //hooks
 import { useFormControl } from "../hooks/useFormControl";
@@ -36,7 +37,7 @@ const Projeto = () => {
                   {id:5, component: <ColetaDadosForm/>, name: 'Coleta de dados'},
                   {id:6, component: <CalcTempoForm/>, name: 'Calculo esforço x tempo'},
                   {id:7, component: <MetasForm/>, name: 'Metas/Prazos'},
-                  {id:8, component: <StakeHolderForm/>, name: 'Cronograma'}
+                  {id:8, component: <Cronograma/>, name: 'Cronograma'}
                ];
 
    const {currentStep, currrentComponent, changeStep, isLastStep, isFirstStep } = useFormControl(steps);
