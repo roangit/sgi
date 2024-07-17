@@ -4,10 +4,19 @@ import React from 'react'
 import { FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
 
 import { useFormContext, useFieldArray } from "react-hook-form"
+import { Svg } from '@react-pdf/renderer';
+import { height } from '@mui/system';
 
 const MetasForm = () => {
   const {register, control, handleSubmit, watch  } = useFormContext();
   const { fields, append, remove } = useFieldArray({ control,  name: "interessados" });
+
+     //Para uso no campo input de data
+  
+      const dt = new Date();
+      const day = ("0" + dt.getDate()).slice(-2);
+      const month = ("0" + (dt.getMonth() + 2)).slice(-2);
+      const date = dt.getFullYear() + "-" + month + "-" + day;
   return (
     <>
        <h2 style={{marginBottom: '2%'}}>Metas/Prazos</h2>
@@ -17,7 +26,7 @@ const MetasForm = () => {
         <tr>
         <th style={{width: '350px'}}>Meta/KPIs/OKRs</th>
         <th style={{width: '200px'}}>Prazo</th>
-        <th style={{width: '65px'}}>Ações</th>
+        <th style={{width: '40px'}}>Ações</th>
 
         </tr>
         {fields.map((field, index) => (
@@ -26,22 +35,21 @@ const MetasForm = () => {
             <input
               type="text"
               maxLength="120"
-              placeholder="Descreva a meta"
-              {...register(`interessados.${index}.nome` , { required: true, maxLength: 90 })} 
+              placeholder="Descreva a meta"             
+              {...register(`metas.${index}.descri` , { required: true, maxLength: 90 })} 
             />
           </td>
      
           <td>
             <input
-              type="text"
-              maxLength="60"
+              type="date"
               placeholder="Prazo"
-              {...register(`interessados.${index}.funcao` , { required: true, maxLength: 60 })} 
+              {...register(`metas.${index}.prazo` , { required: true, maxLength: 60 })} 
             />
           </td>
 
           <td>
-              <i onClick={() => {append({ name: "interessados"  }); }}><FaRegPlusSquare/></i>
+              <i onClick={() => {append({ name: "metas"  }); }}><FaRegPlusSquare/></i>
               {(() => {
                 if (index > 0) {
                   return <i onClick={() => remove(index)}><FaTrashAlt/></i>

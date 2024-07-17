@@ -13,16 +13,6 @@ const Cronograma = () => {
   const {register, control, handleSubmit, watch, getValues  } = useFormContext();
   const { fields, append, remove } = useFieldArray({ control,  name: "interessados" });
 
-  function exportFile() {
-    let lyrics =
-    "But still I'm having memories of high speeds when the cops crashed\n" +
-    "As I laugh, pushin the gas while my Glocks blast\n" ; 
-    
-  
-    var blob = new Blob([lyrics], { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "testfile1.txt");
-  }
-
   return (
     <>
        <h2 style={{marginBottom: '2%'}}>Cronograma</h2>
@@ -105,18 +95,6 @@ const Cronograma = () => {
         </thead>
         <tbody></tbody>
         </table>
-
-        <BlobProvider document={<MyDoc/>}>
-          {({ url, ...rest }) => {
-            console.log(url);
-            return (
-              <a href={(url != null) ? url : ""} target="_blank">Veja em pdf</a>
-            );
-          }}
-      </BlobProvider>
-
-      <button onClick={() => exportFile()}>exportFile</button>
-
     </>
   )
 }

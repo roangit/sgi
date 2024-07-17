@@ -47,7 +47,8 @@ const Projeto = () => {
    const methods = useForm({
       defaultValues: {
          objetivos: [{ descri: '' }],
-         interessados: [{ nome: '',funcao: '', fone:'', tipoInteresse:'', grauInteresse:'', grauInfluencia:'', }]
+         interessados: [{ nome: '',funcao: '', fone:'', tipoInteresse:'', grauInteresse:'', grauInfluencia:'', }],
+         golive: [{depto: '', golive: '', qtdPessoas:'' , qtdEmpresas:'' }]
       },
       });
    const onSubmit = (data) => console.log(data) //jogando os dados no console
@@ -64,7 +65,7 @@ const Projeto = () => {
                   {steps.map((item, index) => 
                     (<span 
                         key={item.id} 
-                        style={item.id == currentStep ?  {color:'#f97316'} :  {color:'#44403c'} }                      
+                        className={item.id == currentStep ?  styles.stepActive : styles.stepInactive }              
                      >
                         {item.name}
                     </span> ))       

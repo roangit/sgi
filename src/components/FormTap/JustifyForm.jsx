@@ -1,8 +1,13 @@
-import React from 'react'
-import { useFormContext } from "react-hook-form"
+import React, { useEffect } from 'react'
+import { useFormContext } from 'react-hook-form'
 
 const JustifyForm = () => {
-  const { register } = useFormContext() // retrieve all hook methods
+  const { register, setFocus } = useFormContext() // retrieve all hook methods
+
+  useEffect(() => {
+    setFocus("justificativa")
+  }, [setFocus])
+
   return (
    <>
    <h2 style={{marginBottom: '2%'}}>Justificativas</h2>
@@ -12,7 +17,7 @@ const JustifyForm = () => {
       rows="14"
       cols="100"
       required
-      {...register("justificativas", { required: true })} >
+      {...register("justificativa", { required: true })} >
     </textarea>
    </>
   )

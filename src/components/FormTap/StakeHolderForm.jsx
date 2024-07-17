@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 
 //import icones
-import { FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
+import { FaRegPlusSquare, FaTrashAlt } from 'react-icons/fa';
 
-import { useFormContext, useFieldArray } from "react-hook-form"
+import { useFormContext, useFieldArray } from 'react-hook-form'
 
 const StakeHolderForm = () => {
-  const {register, control, handleSubmit, watch  } = useFormContext();
+  const {register,setFocus, control, handleSubmit, watch  } = useFormContext();
   const { fields, append, remove } = useFieldArray({ control,  name: "interessados" });
+  
+  useEffect(() => {
+    setFocus("interessados.0.nome")
+  }, [setFocus])
+  
   return (
     <>
        <h2 style={{marginBottom: '2%'}}>StakHolders</h2>
@@ -27,10 +32,11 @@ const StakeHolderForm = () => {
         {fields.map((field, index) => (
         <tr key={field.id}> 
           <td>
-            <input
+            <input style={{textTransform: 'capitalize'}}
               type="text"
               maxLength="120"
               placeholder="Nome"
+              required
               {...register(`interessados.${index}.nome` , { required: true, maxLength: 90 })} 
             />
           </td>
@@ -40,21 +46,23 @@ const StakeHolderForm = () => {
               type="text"
               maxLength="60"
               placeholder="Funcão"
+              required
               {...register(`interessados.${index}.funcao` , { required: true, maxLength: 60 })} 
             />
           </td>
 
           <td>
             <input
-              type="text"
-              maxLength="60"
-              placeholder="(ddd) + telefone"
+              type="tel"
+              placeholder="(99) 9999-9999"             
+              required
               {...register(`interessados.${index}.fone` , { required: true })} 
             />
           </td>
 
           <td>
             <select 
+            required
               {...register(`interessados.${index}.tipoInteresse` , { required: true })} >
               <option value="Positivo">Positivo</option>
               <option value="Negativo">Negativo</option>
@@ -63,6 +71,7 @@ const StakeHolderForm = () => {
 
           <td>
             <select 
+            required
               {...register(`interessados.${index}.grauInteresse` , { required: true })} >
               <option value="Negativo">Alto</option>
               <option value="Positivo">Baixo</option>
@@ -71,6 +80,7 @@ const StakeHolderForm = () => {
 
           <td>
             <select 
+            required
               {...register(`interessados.${index}.grauInfluencia` , { required: true })} >
               <option value="Negativo">Alto</option>
               <option value="Positivo">Baixo</option>

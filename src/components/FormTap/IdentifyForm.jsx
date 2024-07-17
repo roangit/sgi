@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import { useFormContext } from "react-hook-form"
 
 const IdentifyForm = () => {
-  const { register } = useFormContext() // retrieve all hook methods
+  const { register, setFocus  } = useFormContext() // react hook methods
+
+  useEffect(() => {
+    setFocus("projId")
+  }, [setFocus])
+
   return(
     <>
       <h2 style={{marginBottom: '2%'}}>Identificação</h2>
@@ -13,6 +18,7 @@ const IdentifyForm = () => {
           min="111111"
           max="9999999" 
           placeholder=""
+          required
           {...register("projId", {required: true })}
         />  
 
@@ -43,8 +49,10 @@ const IdentifyForm = () => {
           placeholder=""
           autoComplete="off"
           style={{textTransform: 'uppercase'}}
+          required
           {...register("nomeCli", { required: true, maxLength: 120, pattern: /^[A-Z]+$/i } )}
         />
+         {/*uppercase / capitalize eh a opção*/}
         
         <label htmlFor="respTec">Responsável Técnico:</label>
         <select 
