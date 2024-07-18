@@ -27,7 +27,6 @@ const Projeto = () => {
    // sidebar
    const {sideClose} = useContext(SidebarStateContext);
    const mainContainer = sideClose ? `${styles.mainContainer} ${styles.sidebarClose}` : `${styles.mainContainer}`;
- 
   
    // stepper     
    const steps = [{id:0, component: <IdentifyForm/>, name: 'identificação'},
@@ -43,18 +42,16 @@ const Projeto = () => {
    const {currentStep, currrentComponent, changeStep, isLastStep, isFirstStep } = useFormControl(steps);
 
    // react-hook-form
-
    const methods = useForm({
       defaultValues: {
          objetivos: [{ descri: '' }],
-         interessados: [{ nome: '',funcao: '', fone:'', tipoInteresse:'', grauInteresse:'', grauInfluencia:'', }],
-         golive: [{depto: '', golive: '', qtdPessoas:'' , qtdEmpresas:'' }]
+         interessados: [{ nome: '',funcao: '', fone:'', tipoInteresse:'', grauInteresse:'', grauInfluencia:'' }],
+         golive: [{depto:'', dtini:'', dtfim:'', qtdEmpresas:'', qtdPessoasAloc:'', qtdEmpDia:'', qtdEmpSem:'', qtdTotalDias:''}],
+         metas: [{descri:'', prazo:''}]
       },
       });
    const onSubmit = (data) => console.log(data) //jogando os dados no console
-
-
-    
+   
    return (
      <div className={mainContainer}>
         <MainHeader titulo='Projetos'></MainHeader>   

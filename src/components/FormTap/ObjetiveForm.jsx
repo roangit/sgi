@@ -25,7 +25,7 @@ return (
             required
             {...register(`objetivos.${index}.descri`)}
           />
-          <i onClick={() => {append({ name: "objetivos"  }); }}><FaRegPlusSquare/></i>
+          <i onClick={() => {append({ descri:'' }); }}><FaRegPlusSquare/></i>
           {(() => {
             if (index > 0) {
               return <i onClick={() => remove(index)}><FaTrashAlt/></i>

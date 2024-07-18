@@ -6,14 +6,40 @@ import { FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
 import { useFormContext, useFieldArray } from "react-hook-form"
 
 const CalcTempoForm = () => {
-  const {register, setFocus, setValue, control, handleSubmit, watch  } = useFormContext();
+  const {register, setFocus, setValue, control, watch  } = useFormContext();
   const { fields, append, remove } = useFieldArray({ control,  name: "golive" });
 
+     // função de datas
+  function today() {
+    let d = new Date();
+    let currDate = d.getDate();
+    let currMonth = d.getMonth()+1;
+    let currYear = d.getFullYear();
+    return currYear + "-" + ((currMonth<10) ? '0'+currMonth : currMonth )+ "-" + ((currDate<10) ? '0'+currDate : currDate );
+  }   
+
+  function futureDate() {
+    let date= new Date();
+    let novaData = new Date(date.setMonth(date.getMonth() + 2)).toISOString().slice(0,10);
+    return novaData;
+  }
+  
+  let tam = watch('golive').length;
+  let qtdEmpresas = [];
+  let qtdPessoasAloc = []
+
+  for (var i = 0; i < tam; i++) {
+    qtdEmpresas[i] = watch(`golive.${i}.qtdEmpresas`);
+    qtdPessoasAloc[i] = watch(`golive.${i}.qtdPessoasAloc`);
+  }
+
+  // set defalt values se necessário
+  
   useEffect(() => {
     setFocus("golive.0.nome")
-    setValue("golive.0.qtdEmpDia",50000)
-    setValue("golive.0.qtdEmpSem",30000)
-    setValue("golive.0.qtdDiasTotal",9990)
+    //setValue(`golive.0.qtdEmpDia`,50000)
+    //setValue("golive.0.qtdEmpSem",30000)
+    //setValue("golive.0.qtdDiasTotal",9990)
   }, [setFocus])
 
   return (
@@ -23,10 +49,11 @@ const CalcTempoForm = () => {
         <table className="table_1">
         <thead>
         <tr>
-        <th style={{width: '200px'}}>Departamento</th>
-        <th style={{width: '130px'}}>Go Live</th>
-        <th style={{width: '120px'}}>Qtd. Colaboradores</th>
+        <th style={{width: '120px'}}>Departamento</th>
+        <th style={{width: '120px'}}>Dt. Inicio</th>
+        <th style={{width: '120px'}}>Dt Conclusão</th>
         <th style={{width: '120px'}}>Qtd. Empresas</th>
+        <th style={{width: '120px'}}>Qtd. Colaboradores alocados</th>       
         <th style={{width: '120px'}}>Qtd Diária de empresas por colaborador</th>
         <th style={{width: '120px'}}>Qtd Semanal de empresas por colaborador</th>
         <th style={{width: '120px'}}>Dias úteis em implantação</th>
@@ -41,7 +68,7 @@ const CalcTempoForm = () => {
               maxLength="120"
               placeholder="Depto/área"
               list="listaDeptos"
-              {...register(`golive.${index}.nome` , { required: true, maxLength: 90 })} 
+              {...register(`golive.${index}.depto` , { required: true, maxLength: 90 })} 
             />
             <datalist id="listaDeptos">
               <option value="Contabil"></option>
@@ -50,13 +77,21 @@ const CalcTempoForm = () => {
               <option value="Rh/Pessoal"></option>             
               <option value="Societário"></option>
             </datalist>
-          </td>
-     
+          </td>    
+
           <td>
               <input
                 type="date"
-                placeholder="Dt. conclusão"
-                {...register(`golive.${index}.golive` , { required: true })} 
+                placeholder="Dt. inicio"
+                {...register(`golive.${index}.dtini` , { required: true })} 
+              />
+          </td>
+
+          <td>
+              <input
+                type="date"
+                placeholder="Dt_conclusão"
+                {...register(`golive.${index}.dtfim` , { required: true })} 
               />
           </td>
 
@@ -65,22 +100,25 @@ const CalcTempoForm = () => {
                 style={{width: '100px'}}
                 type='number'
                 min='1'
-                {...register(`golive.${index}.qtdPessoas` , { required: true })} 
+                {...register(`golive.${index}.qtdEmpresas` , { required: true,  })} 
               />
           </td>
+
           <td>
               <input
                 style={{width: '100px'}}
                 type='number'
                 min='1'
-                {...register(`golive.${index}.qtdEmpresas` , { required: true,  })} 
+                {...register(`golive.${index}.qtdPessoasAloc` , { required: true })} 
               />
           </td>
+
           <td>
               <input
                 style={{width: '100px'}}
                 type='text'
                 disabled
+                value= { String(qtdEmpresas[index] / qtdPessoasAloc[index]) }
                 {...register(`golive.${index}.qtdEmpDia` , { required: true,  })} 
               />
           </td>
@@ -97,11 +135,11 @@ const CalcTempoForm = () => {
                 style={{width: '100px'}}
                 type='text'
                 disabled
-                {...register(`golive.${index}.qtdDiasTotal` , { required: true,  })} 
+                {...register(`golive.${index}.qtdTotalDias` , { required: true,  })} 
               />
           </td>
           <td>
-              <i onClick={() => {append({ name: "golive" }); }}><FaRegPlusSquare/></i>
+              <i onClick={() => {append({ depto:'', dtini:today(), dtfim:futureDate(), qtdEmpresas:'0', qtdPessoasAloc:'0', qtdEmpDia:'0', qtdEmpSem:'0', qtdTotalDias:'0' }); }}><FaRegPlusSquare/></i>
               {(() => {
                 if (index > 0) {
                   return <i onClick={() => remove(index)}><FaTrashAlt/></i>

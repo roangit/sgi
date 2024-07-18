@@ -88,7 +88,7 @@ const StakeHolderForm = () => {
           </td>
 
           <td>
-              <i onClick={() => {append({ name: "interessados"  }); }}><FaRegPlusSquare/></i>
+              <i onClick={() => {append({ nome: '',funcao: '', fone:'', tipoInteresse:'', grauInteresse:'', grauInfluencia:''  }); }}><FaRegPlusSquare/></i>
               {(() => {
                 if (index > 0) {
                   return <i onClick={() => remove(index)}><FaTrashAlt/></i>

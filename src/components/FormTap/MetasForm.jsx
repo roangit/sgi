@@ -9,7 +9,7 @@ import { height } from '@mui/system';
 
 const MetasForm = () => {
   const {register, control, handleSubmit, watch  } = useFormContext();
-  const { fields, append, remove } = useFieldArray({ control,  name: "interessados" });
+  const { fields, append, remove } = useFieldArray({ control,  name: "metas" });
 
      //Para uso no campo input de data
   
@@ -17,6 +17,7 @@ const MetasForm = () => {
       const day = ("0" + dt.getDate()).slice(-2);
       const month = ("0" + (dt.getMonth() + 2)).slice(-2);
       const date = dt.getFullYear() + "-" + month + "-" + day;
+
   return (
     <>
        <h2 style={{marginBottom: '2%'}}>Metas/Prazos</h2>
@@ -49,7 +50,7 @@ const MetasForm = () => {
           </td>
 
           <td>
-              <i onClick={() => {append({ name: "metas"  }); }}><FaRegPlusSquare/></i>
+              <i onClick={() => {append({ descri: '', prazo: ''}); }}><FaRegPlusSquare/></i>
               {(() => {
                 if (index > 0) {
                   return <i onClick={() => remove(index)}><FaTrashAlt/></i>

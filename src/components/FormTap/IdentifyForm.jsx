@@ -35,7 +35,7 @@ const IdentifyForm = () => {
         <select 
           multiple={false}
           id="Produto"
-          {...register("Produto", {required: true})}>
+          {...register("produto", {required: true})}>
           <option value="Start">Start</option>
           <option value="Plus">Plus</option>
           <option value="Premium">Premium</option>
